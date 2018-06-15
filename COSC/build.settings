@@ -1,0 +1,100 @@
+settings =
+{
+	iphone =
+	{
+		plist=
+		{
+			UIApplicationExitsOnSuspend = false,
+			UIPrerenderedIcon = true,
+			UIStatusBarHidden = false,
+			UILaunchStoryboardName = "LaunchScreen",
+			CFBundleIconFiles =
+			{
+				"Icon-40.png",
+				"Icon-58.png",
+				"Icon-76.png",
+				"Icon-80.png",
+				"Icon-87.png",
+				"Icon-120.png",
+				"Icon-152.png",
+				"Icon-167.png",
+				"Icon-180.png",
+			},
+			NSAppTransportSecurity =
+			{
+				NSExceptionDomains =
+				{
+					["coronalabs.com"] =
+					{
+						NSIncludesSubdomains = true,
+						NSThirdPartyExceptionAllowsInsecureHTTPLoads = true
+					},
+					["youtube.com"] =
+					{
+						NSIncludesSubdomains = true,
+						NSThirdPartyExceptionAllowsInsecureHTTPLoads = true
+					},
+					["google.com"] =
+					{
+						NSIncludesSubdomains = true,
+						NSThirdPartyExceptionAllowsInsecureHTTPLoads = true
+					},
+				},
+			},
+
+		},
+	},
+	orientation =
+	{
+		default = "portrait",
+		supported =
+		{
+			"portait", "portraitUpsideDown", 
+		},
+	},
+	android =
+	{
+		usesPermissions =
+		{
+			-- Required by the MapView to fetch its contents from the Google Maps servers.
+			"android.permission.INTERNET",
+
+			-- Optional permission used to display current location via the GPS.
+			"android.permission.ACCESS_FINE_LOCATION",
+
+			-- Optional permission used to display current location via WiFi or cellular service.
+			"android.permission.ACCESS_COARSE_LOCATION",
+			"com.google.android.c2dm.permission.RECEIVE",
+		},
+		usesFeatures =
+		{
+			-- If you set permissions "ACCESS_FINE_LOCATION" and "ACCESS_COARSE_LOCATION" above,
+			-- then you may want to set up your app to not require location services as follows.
+			-- Otherwise, devices that do not have location sevices (such as a GPS) will be unable
+			-- to purchase this app in the app store.
+			{ name = "android.hardware.location", required = false },
+			{ name = "android.hardware.location.gps", required = false },
+			{ name = "android.hardware.location.network", required = false },
+		},
+	},
+	plugins =
+	{
+		["CoronaProvider.native.popup.social"] =
+		{
+			-- required
+			publisherId = "com.coronalabs",
+		},
+        ["plugin.utf8"] =
+        {
+            publisherId = "com.coronalabs"
+        },
+		
+	},  
+	window =
+	{
+		titleText =
+		{
+			default = "Corona Business App Sample",
+		},
+	},
+}
