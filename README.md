@@ -35,7 +35,7 @@ Development 100%
 
 * Fully operational
 
-#### MAXOSCrecv - MAX Example for testing OSC communication
+### MAXOSCrecv - MAX Example for testing OSC communication
 
 Development 100%
 
