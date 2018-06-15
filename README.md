@@ -6,39 +6,39 @@
 
 Development  80%
 
-*Configuration scene does not work
-*Communication works
+* Configuration scene does not work
+* Communication works
 
 
 ### COSC - Corona OSC
 
 Development 60%
 
-*Communication does not work
+* Communication does not work
 
 ### POSC - Processing OSC
 
 Development  99%
 
-*Fully operational
-*No-known Bugs
+* Fully operational
+* No-known Bugs
 
 ### RNOSC - React Native (JavaScript) OSC
 
 Development 60%
 
-*Communication does not work
+* Communication does not work
 
 ### PyOSC - Small Example of OSC communication
 
 Development 100%
 
-*Fully operational
+* Fully operational
 
 #### MAXOSCrecv - MAX Example for testing OSC communication
 
 Development 100%
 
-*Fully operational
+* Fully operational
 
 
