@@ -1,14 +1,44 @@
 # OSController
 
-Experimental OSC Controller developed by ENES Morelia.
+## Experimental OSC Controller developed by ENES Morelia.
 
-APOSC - Android Processing OSC
-COSC - Corona OSC
-POSC - Processing OSC
-RNOSC - React Native (JavaScript) OSC
+### APOSC - Android Processing OSC
 
-PyOSC - Small Example of OSC communication
+Development  80%
 
-MAXOSCrecv - MAX Example for testing OSC communication
+Configuration scene does not work
+Communication works
+
+
+### COSC - Corona OSC
+
+Development 60%
+
+Communication does not work
+
+### POSC - Processing OSC
+
+Development  99%
+
+Fully operational
+No-known Bugs
+
+### RNOSC - React Native (JavaScript) OSC
+
+Development 60%
+
+Communication does not work
+
+### PyOSC - Small Example of OSC communication
+
+Development 100%
+
+Fully operational
+
+#### MAXOSCrecv - MAX Example for testing OSC communication
+
+Development 100%
+
+Fully operational
 
 
