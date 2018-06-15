@@ -29,16 +29,18 @@ Development 60%
 
 * Communication does not work
 
+### MAXOSCrecv - MAX Example for testing OSC communication
+
+Development 100%
+
+* Fully operational
+
 ### PyOSC - Small Example of OSC communication
 
 Development 100%
 
 * Fully operational
 
-### MAXOSCrecv - MAX Example for testing OSC communication
 
-Development 100%
-
-* Fully operational
 
 
