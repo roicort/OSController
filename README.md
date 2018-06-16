@@ -1,6 +1,7 @@
 # OSController
 
 ![Build Status](https://travis-ci.org/dwyl/esta.svg?branch=master)
+![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
 
 ## Experimental OSC Controller developed by ENES Morelia.
 
