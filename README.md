@@ -1,5 +1,7 @@
 # OSController
 
+[![Build Status](https://travis-ci.org/dwyl/esta.svg?branch=master)]
+
 ## Experimental OSC Controller developed by ENES Morelia.
 
 ### APOSC - Android Processing OSC
