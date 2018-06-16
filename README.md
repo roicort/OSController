@@ -45,6 +45,13 @@ Development 100%
 
 * Fully operational
 
+#### References
+
+Special Thanks To
+
+* oscP5 
+* controlP5
+
 
 
 
