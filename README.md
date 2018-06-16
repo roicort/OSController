@@ -45,7 +45,7 @@ Development 100%
 
 * Fully operational
 
-#### References
+### References
 
 Special Thanks To
 
