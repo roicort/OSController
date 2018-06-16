@@ -49,8 +49,12 @@ Development 100%
 
 Special Thanks To
 
+* Processing
 * oscP5 
 * controlP5
+* ket:ai
+* ReactNative
+* Corona
 
 
 
