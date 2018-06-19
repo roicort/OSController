@@ -88,18 +88,18 @@ void setup() {
      .setPosition(225,700)
      .setSize(75,75)
      ;    
-  controlP5.addButton("Settings")
-     .setValue(0)
-     .setPosition(300,700)
-     .setSize(75,75)
-     ;
+     
+  //controlP5.addButton("Settings")
+  //   .setValue(0)
+  //   .setPosition(300,700)
+  //   .setSize(75,75)
+  //   ;
      
   controlP5.addButton("Main")
      .setValue(0)
      .setPosition(0,700)
      .setSize(75,75)
      ;
-  
   
   oscP5 = new OscP5(this, 12000);   //listening
   myRemoteLocation = new NetAddress(IP, Port);  //  speak to
@@ -194,13 +194,13 @@ void draw() {
        controlP5.draw();
     
     
-    if (Settings == true){
-        background(100,100,100);   
-        textSize(32);
-        text("Settings", 10, 90); 
-        controlP5.draw();
+    //if (Settings == true){
+       // background(100,100,100);   
+       // textSize(32);
+      //  text("Settings", 10, 90); 
+      //  controlP5.draw();
 
-    }
+    //}
   }
 }
 
@@ -250,7 +250,7 @@ void controlEvent(ControlEvent theEvent) {
         Instructions = false;
   More = false;
   Acknowledgements = false;
-  Settings = false;
+  //Settings = false;
   BuildMain = true;
   controlP5.remove("slider1");
   controlP5.remove("slider2");
@@ -275,7 +275,7 @@ void controlEvent(ControlEvent theEvent) {
    More = false;
    Acknowledgements = false;
       Main = false;
-      Settings = false;
+      //Settings = false;
         BuildMain = true;
 
   controlP5.remove("slider1");
@@ -302,10 +302,10 @@ void controlEvent(ControlEvent theEvent) {
       More = false;
       Acknowledgements = false;
         BuildMain = true;
-        Settings = false;
+        // Settings = false;
     if (BuildSlider == true){
       controlP5.addSlider("slider1", 0, 100, 0, 20, 200, 410, 20);
-      //controlP5.addSlider("slider2", 0, 100, 0, 20, 250, 410, 20);
+      controlP5.addSlider("slider2", 0, 100, 0, 20, 250, 410, 20);
       //controlP5.addSlider("slider3", 0, 100, 0, 20, 300, 410, 20);
       //controlP5.addSlider("slider4", 0, 100, 0, 20, 350, 410, 20);
       //controlP5.addSlider("slider5", 0, 100, 0, 20, 400, 410, 20);
@@ -327,7 +327,7 @@ void controlEvent(ControlEvent theEvent) {
       Instructions = true;
 More = false;
 Acknowledgements = false;
-Settings = false;
+// Settings = false;
         BuildMain = true;
 
           controlP5.remove("slider1");
@@ -350,7 +350,7 @@ Settings = false;
       Instructions = false;
      More = true;
      Acknowledgements = false;
-     Settings = false;
+     // Settings = false;
         BuildMain = true;
 
           controlP5.remove("slider1");
@@ -373,7 +373,7 @@ Settings = false;
       Instructions = false;
 More = false;
 Acknowledgements = true;
-Settings = false;
+// Settings = false;
         BuildMain = true;
 
           controlP5.remove("slider1");
@@ -455,19 +455,19 @@ Settings = false;
        Gyro = false;
        Slider = false;
        Instructions = false;
-More = false;
-Settings = false;
-Acknowledgements = false;
-
-  controlP5.remove("slider1");
-  controlP5.remove("slider2");
-  controlP5.remove("slider3");
-  controlP5.remove("slider4");
-  controlP5.remove("slider5");
-  controlP5.remove("slider6");
-  controlP5.remove("slider7");
-  controlP5.remove("slider8");
-  BuildSlider = true;
+       More = false;
+        // Settings = false;
+        Acknowledgements = false;
+        
+       controlP5.remove("slider1");
+       controlP5.remove("slider2");
+       controlP5.remove("slider3");
+       controlP5.remove("slider4");
+       controlP5.remove("slider5");
+       controlP5.remove("slider6");
+       controlP5.remove("slider7");
+       controlP5.remove("slider8");
+       BuildSlider = true;
   
   if (BuildMain == true){
   
