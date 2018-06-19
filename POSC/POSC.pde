@@ -15,7 +15,6 @@ String scene;
 
 float[] touchnum1 = new float[1];
 float[] touchnum2 = new float[1];
-
 float[] auxSend = new float[1];
 
 int col;

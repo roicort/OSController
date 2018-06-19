@@ -9,4 +9,12 @@
             </intent-filter>
         </activity>
     </application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.BIND_REMOTEVIEWS"/>
+    <uses-permission android:name="android.permission.BIND_TEXT_SERVICE"/>
+    <uses-permission android:name="android.permission.BIND_VPN_SERVICE"/>
+    <uses-permission android:name="android.permission.BODY_SENSORS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
 </manifest>

@@ -25,12 +25,22 @@ int varName;
 
 float[] numbers = new float[8];
 
-float[] touchnum = new float[2];
+float[] touchnum1 = new float[1];
+float[] touchnum2 = new float[1];
+
+float[] gyronum1 = new float[1];
+float[] gyronum2 = new float[1];
+
+float[] auxSend = new float[1];
 
 int col;
 
-String IP = "127.0.0.1";
-int Port = 2223;
+//Aqui se configura la IP y el Puerto
+
+String IP = "10.200.3.3";
+int Port = 9000;
+
+//***********************************
 
 boolean Touch = false;
 boolean Gyro = false;
@@ -47,7 +57,8 @@ boolean Acknowledgements = false;
 boolean Settings = false;
 
 void setup() {
- size(480, 800);
+  
+  orientation(PORTRAIT);
  
   controlP5 = new ControlP5(this);
   controlP5.setAutoDraw(false);
@@ -115,7 +126,7 @@ void draw() {
     if (Slider == true){
         background(200,50,0);   
         textSize(32);
-        text("Sliders", 10, 90); 
+        text("Sliders", 10, 90);
         controlP5.draw();
 
     }
@@ -130,26 +141,27 @@ void draw() {
         fill(255);
         if ((mouseX > 40) && (mouseX < 440) && (mouseY > 200) && (mouseY < 600)){  
         ellipse(mouseX, mouseY, 10, 10); 
-        touchnum[0]=mouseX/4-10;
-        touchnum[1]=mouseY/4-50;
-        send("/touch",touchnum);
+        touchnum1[0]=mouseX/4-10;
+        touchnum2[0]=mouseY/4-50;
+        send("/touch1",touchnum1);
+        send("/touch2",touchnum2);
 
 
 
 }
     }
     if (Gyro == true){
-
-        background(104,58,200);
+      
+       background(104,58,200);
        textSize(32);
-         text("Gyro", 10, 90); 
-         text("X: " + ax + "\nY: " + ay + "\nZ: " + az, 170, 350, width, height);
-         ellipse(ax, ay, 10, 10); 
+       text("Gyro", 10, 90); 
+       text("X: " + ax + "\nY: " + ay + "\nZ: " + az, 170, 350, width, height);
+       ellipse(ax, ay, 10, 10); 
        controlP5.draw();
-        numbers[0]=0;
-       numbers[1]=0;
-       send("/gyro",numbers);
-    
+       gyronum1[0]=ax;
+       gyronum2[0]=ay;
+       send("/gyro",gyronum1);
+       send("/gyro",gyronum2);
     }
     
       if (Instructions == true){
@@ -236,9 +248,9 @@ void controlEvent(ControlEvent theEvent) {
        Slider = false;
         Main = false;
         Instructions = false;
-More = false;
-Acknowledgements = false;
-Settings = false;
+  More = false;
+  Acknowledgements = false;
+  Settings = false;
   BuildMain = true;
   controlP5.remove("slider1");
   controlP5.remove("slider2");
@@ -260,8 +272,8 @@ Settings = false;
       Touch = false;
       Slider = false;
       Instructions = false;
-More = false;
-Acknowledgements = false;
+   More = false;
+   Acknowledgements = false;
       Main = false;
       Settings = false;
         BuildMain = true;
@@ -287,22 +299,22 @@ Acknowledgements = false;
       Slider = true;
       Main = false;
       Instructions = false;
-More = false;
-Acknowledgements = false;
+      More = false;
+      Acknowledgements = false;
         BuildMain = true;
         Settings = false;
     if (BuildSlider == true){
-  controlP5.addSlider("slider1", 0, 100, 0, 20, 200, 410, 20);
-  controlP5.addSlider("slider2", 0, 100, 0, 20, 250, 410, 20);
-  controlP5.addSlider("slider3", 0, 100, 0, 20, 300, 410, 20);
-  controlP5.addSlider("slider4", 0, 100, 0, 20, 350, 410, 20);
-  controlP5.addSlider("slider5", 0, 100, 0, 20, 400, 410, 20);
-  controlP5.addSlider("slider6", 0, 100, 0, 20, 450, 410, 20);
-  controlP5.addSlider("slider7", 0, 100, 0, 20, 500, 410, 20);
-  controlP5.addSlider("slider8", 0, 100, 0, 20, 550, 410, 20);
-    controlP5.remove("Instructions");
-    controlP5.remove("More");
-    controlP5.remove("Acknowledgements");
+      controlP5.addSlider("slider1", 0, 100, 0, 20, 200, 410, 20);
+      //controlP5.addSlider("slider2", 0, 100, 0, 20, 250, 410, 20);
+      //controlP5.addSlider("slider3", 0, 100, 0, 20, 300, 410, 20);
+      //controlP5.addSlider("slider4", 0, 100, 0, 20, 350, 410, 20);
+      //controlP5.addSlider("slider5", 0, 100, 0, 20, 400, 410, 20);
+      //controlP5.addSlider("slider6", 0, 100, 0, 20, 450, 410, 20);
+      //controlP5.addSlider("slider7", 0, 100, 0, 20, 500, 410, 20);
+      //controlP5.addSlider("slider8", 0, 100, 0, 20, 550, 410, 20);
+      controlP5.remove("Instructions");
+      controlP5.remove("More");
+      controlP5.remove("Acknowledgements");
   BuildSlider=false;
     }
       }
@@ -336,9 +348,9 @@ Settings = false;
       Slider = false;
       Main = false;
       Instructions = false;
-More = true;
-Acknowledgements = false;
-Settings = false;
+     More = true;
+     Acknowledgements = false;
+     Settings = false;
         BuildMain = true;
 
           controlP5.remove("slider1");
@@ -383,9 +395,9 @@ Settings = false;
       Slider = false;
       Main = false;
       Instructions = false;
-More = false;
-Acknowledgements = true;
-Settings = true;
+     More = false;
+     Acknowledgements = true;
+     Settings = true;
         BuildMain = true;
 
           controlP5.remove("slider1");
@@ -400,6 +412,43 @@ Settings = true;
     controlP5.remove("More");
     controlP5.remove("Acknowledgements");
       }
+      
+      if (theEvent.getController().getName()=="slider1"){
+      auxSend[0]=theEvent.getController().getValue();
+      send("/slider1",auxSend);
+    }
+    if (theEvent.getController().getName()=="slider2") {
+      auxSend[0]=theEvent.getController().getValue();
+      send("/slider2",auxSend);
+    }
+    
+        if (theEvent.getController().getName()=="slider3"){
+      auxSend[0]=theEvent.getController().getValue();
+      send("/slider3",auxSend);
+    }
+    if (theEvent.getController().getName()=="slider4") {
+      auxSend[0]=theEvent.getController().getValue();
+      send("/slider4",auxSend);
+    }
+    
+        if (theEvent.getController().getName()=="slider5"){
+      auxSend[0]=theEvent.getController().getValue();
+      send("/slider5",auxSend);
+    }
+    if (theEvent.getController().getName()=="slider6") {
+      auxSend[0]=theEvent.getController().getValue();
+      send("/slider6",auxSend);
+    }
+    
+        if (theEvent.getController().getName()=="slider7"){
+      auxSend[0]=theEvent.getController().getValue();
+      send("/slider7",auxSend);
+    }
+    if (theEvent.getController().getName()=="slider8") {
+      auxSend[0]=theEvent.getController().getValue();
+      send("/slider8",auxSend);
+    }
+      
     if (theEvent.getController().getName()=="Main") {
        Main = true;
        Touch = false;
