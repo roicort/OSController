@@ -15,7 +15,6 @@ String scene;
 
 float[] touchnum1 = new float[1];
 float[] touchnum2 = new float[1];
-
 float[] auxSend = new float[1];
 
 int col;
@@ -94,7 +93,7 @@ void sceneSelect(String scene){
   
   if (scene=="Main"){
   textSize(32);
-  background(25, 25, 180);
+  background(0, 149, 182);
   text("OSC Controller", 10, 90); 
     textSize(20);
   text("MyT Lab - ENES Morelia", 10, 125); 
