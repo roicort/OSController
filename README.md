@@ -4,6 +4,8 @@
 ![Dependency Status](https://david-dm.org/dwyl/esta.svg)
 ![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
 
+![logo_unam_oro.jpg](https://www.zaragoza.unam.mx/portal/wp-content/Portal2015/Descargas/logo_unam_oro.jpg)
+
 ## Experimental OSC Controller developed by ENES Morelia.
 
 ### APOSC - Android Processing OSC
