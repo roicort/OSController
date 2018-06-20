@@ -23,37 +23,44 @@ NetAddress myRemoteLocation;
 PFont  font;
 int varName;
 
-float[] numbers = new float[8];
-
 float[] touchnum1 = new float[1];
 float[] touchnum2 = new float[1];
 
 float[] gyronum1 = new float[1];
 float[] gyronum2 = new float[1];
 
-float[] auxSend = new float[1];
+float[] slider1 = new float[1];
+float[] slider2 = new float[1];
+float[] slider3 = new float[1];
+float[] slider4 = new float[1];
+float[] slider5 = new float[1];
+float[] slider6 = new float[1];
+float[] slider7 = new float[1];
+float[] slider8 = new float[1];
+
+float[] toggle1 = new float[1];
+float[] toggle2 = new float[1];
+float[] toggle3 = new float[1];
+float[] toggle4 = new float[1];
+float[] toggle5 = new float[1];
+float[] toggle6 = new float[1];
+float[] toggle7 = new float[1];
+float[] toggle8 = new float[1];
 
 int col;
 
 //Aqui se configura la IP y el Puerto
 
-String IP = "10.200.3.3";
-int Port = 9000;
+String IP = "192.168.0.100";
+int Port = 2223;
 
 //***********************************
 
+boolean Home = false;
+boolean Sliders = false;
 boolean Touch = false;
 boolean Gyro = false;
-boolean Slider = false;
-boolean Main = false;
-
-boolean BuildSlider = true;
-boolean BuildMain = true;
-
-boolean Instructions = false;
-boolean More = false;
-boolean Acknowledgements = false;
-
+boolean Buttons = false;
 boolean Settings = false;
 
 void setup() {
@@ -69,10 +76,7 @@ void setup() {
   listener = new AccelerometerListener();
   manager.registerListener(listener, sensor, SensorManager.SENSOR_DELAY_GAME);
 
-    // create a new button with name 'buttonA'
-
-  // and add another 2 buttons
-  controlP5.addButton("Slider")
+  controlP5.addButton("Sliders")
      .setValue(0)
      .setPosition(75,700)
      .setSize(75,75)
@@ -89,32 +93,126 @@ void setup() {
      .setSize(75,75)
      ;    
      
-  //controlP5.addButton("Settings")
-  //   .setValue(0)
-  //   .setPosition(300,700)
-  //   .setSize(75,75)
-  //   ;
+  controlP5.addButton("Buttons")
+     .setValue(0)
+     .setPosition(300,700)
+     .setSize(75,75)
+     ;    
      
-  controlP5.addButton("Main")
+  controlP5.addButton("Home")
      .setValue(0)
      .setPosition(0,700)
      .setSize(75,75)
      ;
-  
+     
+     
+    controlP5.addSlider("S1")
+     .setPosition(50,200)
+     .setSize(380,40)
+     .setRange(0,100)
+     .hide()
+     ;
+    controlP5.addSlider("S2")
+     .setPosition(50,250)
+     .setSize(380,40)
+     .setRange(0,100)
+     .hide()
+     ;
+    controlP5.addSlider("S3")
+     .setPosition(50,300)
+     .setSize(380,40)
+     .setRange(0,100)
+     .hide()
+     ;
+    controlP5.addSlider("S4")
+     .setPosition(50,350)
+     .setSize(380,40)
+     .setRange(0,100)
+     .hide()
+     ;
+    controlP5.addSlider("S5")
+     .setPosition(50,400)
+     .setSize(380,40)
+     .setRange(0,100)
+     .hide()
+     ;
+    controlP5.addSlider("S6")
+     .setPosition(50,450)
+     .setSize(380,40)
+     .setRange(0,100)
+     .hide()
+     ;
+    controlP5.addSlider("S7")
+     .setPosition(50,500)
+     .setSize(380,40)
+     .setRange(0,100)
+     .hide()
+     ;
+    controlP5.addSlider("S8")
+     .setPosition(50,550)
+     .setSize(380,40)
+     .setRange(0,100)
+     .hide()
+     ;
+     
+     
+     
+     
+     
+    controlP5.addToggle("T1")
+     .setPosition(160,250)
+     .setSize(50,20)
+     .hide()
+     ;
+    controlP5.addToggle("T2")
+     .setPosition(160,325)
+     .setSize(50,20)
+     .hide()
+     ;
+    controlP5.addToggle("T3")
+     .setPosition(160,400)
+     .setSize(50,20)
+     .hide()
+     ;
+    controlP5.addToggle("T4")
+     .setPosition(160,475)
+     .setSize(50,20)
+     .hide()
+     ;
+     
+    controlP5.addToggle("T5")
+     .setPosition(260,250)
+     .setSize(50,20)
+     .hide()
+     ;
+    controlP5.addToggle("T6")
+     .setPosition(260,325)
+     .setSize(50,20)
+     .hide()
+     ;
+    controlP5.addToggle("T7")
+     .setPosition(260,400)
+     .setSize(50,20)
+     .hide()
+     ;
+    controlP5.addToggle("T8")
+     .setPosition(260,475)
+     .setSize(50,20)
+     .hide()
+     ;
+     
   oscP5 = new OscP5(this, 12000);   //listening
   myRemoteLocation = new NetAddress(IP, Port);  //  speak to
   
   // The method plug take 3 arguments. Wait for the <keyword>
   oscP5.plug(this, "varName", "keyword");
   
- Main = true;
-  
 }
 
 void draw() { 
   
-  if (Main == true){
-       background(25, 25, 180);
+  if (Home == true){
+       background(0, 149, 182);
        textSize(32);
        text("OSC Controller", 10, 90); 
        textSize(20);
@@ -123,12 +221,28 @@ void draw() {
        controlP5.draw();
   }
   
-    if (Slider == true){
-        background(200,50,0);   
+    if (Sliders == true){
+        background(214, 0, 57);  
         textSize(32);
         text("Sliders", 10, 90);
         controlP5.draw();
-
+        
+        slider1[0]=controlP5.getController("S1").getValue();
+        send("/slider1",slider1);
+        slider2[0]=controlP5.getController("S2").getValue();
+        send("/slider2",slider2);
+        slider3[0]=controlP5.getController("S3").getValue();
+        send("/slider3",slider3);
+        slider4[0]=controlP5.getController("S4").getValue();
+        send("/slider4",slider4);
+        slider5[0]=controlP5.getController("S5").getValue();
+        send("/slider5",slider5);
+        slider6[0]=controlP5.getController("S6").getValue();
+        send("/slider6",slider6);
+        slider7[0]=controlP5.getController("S7").getValue();
+        send("/slider7",slider7);
+        slider8[0]=controlP5.getController("S8").getValue();
+        send("/slider8",slider8);
     }
     
     if (Touch == true){
@@ -145,64 +259,57 @@ void draw() {
         touchnum2[0]=mouseY/4-50;
         send("/touch1",touchnum1);
         send("/touch2",touchnum2);
-
-
-
 }
+
     }
     if (Gyro == true){
       
        background(104,58,200);
        textSize(32);
        text("Gyro", 10, 90); 
-       text("X: " + ax + "\nY: " + ay + "\nZ: " + az, 170, 350, width, height);
-       ellipse(ax, ay, 10, 10); 
+       text("X: " + ax + "\nY: " + ay, 170, 350, width, height);
        controlP5.draw();
        gyronum1[0]=ax;
        gyronum2[0]=ay;
-       send("/gyro",gyronum1);
-       send("/gyro",gyronum2);
+       send("/gyro1",gyronum1);
+       send("/gyro2",gyronum2);
+    }
+
+    if (Buttons == true){
+        background(200,50,0);    
+        textSize(32);
+        text("Buttons", 10, 90);
+        controlP5.draw();
+        
+        toggle1[0]=controlP5.getController("T1").getValue();
+        send("/toggle1",toggle1);
+        toggle2[0]=controlP5.getController("T2").getValue();
+        send("/toggle2",toggle2);
+        toggle3[0]=controlP5.getController("T3").getValue();
+        send("/toggle3",toggle3);
+        toggle4[0]=controlP5.getController("T4").getValue();
+        send("/toggle4",toggle4);
+        toggle5[0]=controlP5.getController("T5").getValue();
+        send("/toggle5",toggle5);
+        toggle6[0]=controlP5.getController("T6").getValue();
+        send("/toggle6",toggle6);
+        toggle7[0]=controlP5.getController("T7").getValue();
+        send("/toggle7",toggle7);
+        toggle8[0]=controlP5.getController("T8").getValue();
+        send("/toggle8",toggle8);
+
     }
     
-      if (Instructions == true){
-       background(25, 25, 180);
-       textSize(32);
-       text("OSC Controller", 10, 90); 
-       textSize(20);
-       text("MyT Lab - ENES Morelia", 10, 125); 
-       textSize(32);
-       controlP5.draw();
-  }
-  
-    if (More == true){
-       background(25, 25, 180);
-       textSize(32);
-       text("OSC Controller", 10, 90); 
-       textSize(20);
-       text("MyT Lab - ENES Morelia", 10, 125); 
-       textSize(32);
-       controlP5.draw();
-  }
-  
-    if (Acknowledgements == true){
-       background(25, 25, 180);
-       textSize(32);
-       text("OSC Controller", 10, 90); 
-       textSize(20);
-       text("MyT Lab - ENES Morelia", 10, 125); 
-       textSize(32);
-       controlP5.draw();
-    
-    
-    //if (Settings == true){
-       // background(100,100,100);   
-       // textSize(32);
-      //  text("Settings", 10, 90); 
-      //  controlP5.draw();
+    if (Settings == true){
+        background(200,50,0);   
+        textSize(32);
+        text("Settings", 10, 90);
+        controlP5.draw();
 
-    //}
+    }    
+    
+    
   }
-}
 
 
 class AccelerometerListener implements SensorEventListener {
@@ -235,259 +342,106 @@ void send(String source, float[] numbers){
   oscP5.send(newMessage, myRemoteLocation); 
 }
 
+void hideSliders(){
+  
+    controlP5.getController("S1").hide();
+    controlP5.getController("S2").hide();
+    controlP5.getController("S3").hide();
+    controlP5.getController("S4").hide();
+    controlP5.getController("S5").hide();
+    controlP5.getController("S6").hide();
+    controlP5.getController("S7").hide();
+    controlP5.getController("S8").hide();  
+ 
+}
+
+void hideToggle(){
+  
+    controlP5.getController("T1").hide();
+    controlP5.getController("T2").hide();
+    controlP5.getController("T3").hide();
+    controlP5.getController("T4").hide();
+    controlP5.getController("T5").hide();
+    controlP5.getController("T6").hide();
+    controlP5.getController("T7").hide();
+    controlP5.getController("T8").hide();  
+ 
+}
 
 
 void controlEvent(ControlEvent theEvent) {
 
   if (theEvent.isController()) { 
     
-    
-    if (theEvent.getController().getName()=="Touch") {
-       Touch = true;
-       Gyro = false;
-       Slider = false;
-        Main = false;
-        Instructions = false;
-  More = false;
-  Acknowledgements = false;
-  //Settings = false;
-  BuildMain = true;
-  controlP5.remove("slider1");
-  controlP5.remove("slider2");
-  controlP5.remove("slider3");
-  controlP5.remove("slider4");
-  controlP5.remove("slider5");
-  controlP5.remove("slider6");
-  controlP5.remove("slider7");
-  controlP5.remove("slider8");
-      controlP5.remove("Instructions");
-    controlP5.remove("More");
-    controlP5.remove("Acknowledgements");
-    BuildSlider = true;
-
-    }
-    
-    if (theEvent.getController().getName()=="Gyro") {
-      Gyro = true;
-      Touch = false;
-      Slider = false;
-      Instructions = false;
-   More = false;
-   Acknowledgements = false;
-      Main = false;
-      //Settings = false;
-        BuildMain = true;
-
-  controlP5.remove("slider1");
-  controlP5.remove("slider2");
-  controlP5.remove("slider3");
-  controlP5.remove("slider4");
-  controlP5.remove("slider5");
-  controlP5.remove("slider6");
-  controlP5.remove("slider7");
-  controlP5.remove("slider8");
-      controlP5.remove("Instructions");
-    controlP5.remove("More");
-    controlP5.remove("Acknowledgements");
-  BuildSlider = true;
-
+  if ((theEvent.getController().getName()=="Home") && (Home==false)) {
+    Home=true;
+    Sliders=false;
+    Touch=false;
+    Gyro=false;
+    Buttons=false;
+    Settings=false;  
+    hideSliders();
+    hideToggle();
   }
-
-    if (theEvent.getController().getName()=="Slider") {
-      Gyro = false;
-      Touch = false;
-      Slider = true;
-      Main = false;
-      Instructions = false;
-      More = false;
-      Acknowledgements = false;
-        BuildMain = true;
-        // Settings = false;
-    if (BuildSlider == true){
-      controlP5.addSlider("slider1", 0, 100, 0, 20, 200, 410, 20);
-      controlP5.addSlider("slider2", 0, 100, 0, 20, 250, 410, 20);
-      //controlP5.addSlider("slider3", 0, 100, 0, 20, 300, 410, 20);
-      //controlP5.addSlider("slider4", 0, 100, 0, 20, 350, 410, 20);
-      //controlP5.addSlider("slider5", 0, 100, 0, 20, 400, 410, 20);
-      //controlP5.addSlider("slider6", 0, 100, 0, 20, 450, 410, 20);
-      //controlP5.addSlider("slider7", 0, 100, 0, 20, 500, 410, 20);
-      //controlP5.addSlider("slider8", 0, 100, 0, 20, 550, 410, 20);
-      controlP5.remove("Instructions");
-      controlP5.remove("More");
-      controlP5.remove("Acknowledgements");
-  BuildSlider=false;
-    }
-      }
-      
-      if (theEvent.getController().getName()=="Instructions") {
-              Gyro = false;
-      Touch = false;
-      Slider = false;
-      Main = false;
-      Instructions = true;
-More = false;
-Acknowledgements = false;
-// Settings = false;
-        BuildMain = true;
-
-          controlP5.remove("slider1");
-           controlP5.remove("slider2");
-           controlP5.remove("slider3");
-         controlP5.remove("slider4");
-       controlP5.remove("slider5");
-            controlP5.remove("slider6");
-       controlP5.remove("slider7");
-          controlP5.remove("slider8");
-        controlP5.remove("Instructions");
-          controlP5.remove("More");
-          controlP5.remove("Acknowledgements");
-      }
-      if (theEvent.getController().getName()=="More") {
-              Gyro = false;
-      Touch = false;
-      Slider = false;
-      Main = false;
-      Instructions = false;
-     More = true;
-     Acknowledgements = false;
-     // Settings = false;
-        BuildMain = true;
-
-          controlP5.remove("slider1");
-  controlP5.remove("slider2");
-  controlP5.remove("slider3");
-  controlP5.remove("slider4");
-  controlP5.remove("slider5");
-  controlP5.remove("slider6");
-  controlP5.remove("slider7");
-  controlP5.remove("slider8");
-      controlP5.remove("Instructions");
-    controlP5.remove("More");
-    controlP5.remove("Acknowledgements");
-      }
-      if (theEvent.getController().getName()=="Acknowledgements") {
-              Gyro = false;
-      Touch = false;
-      Slider = false;
-      Main = false;
-      Instructions = false;
-More = false;
-Acknowledgements = true;
-// Settings = false;
-        BuildMain = true;
-
-          controlP5.remove("slider1");
-  controlP5.remove("slider2");
-  controlP5.remove("slider3");
-  controlP5.remove("slider4");
-  controlP5.remove("slider5");
-  controlP5.remove("slider6");
-  controlP5.remove("slider7");
-  controlP5.remove("slider8");
-      controlP5.remove("Instructions");
-    controlP5.remove("More");
-    controlP5.remove("Acknowledgements");
-      }
-      
-          if (theEvent.getController().getName()=="Settings") {
-              Gyro = false;
-      Touch = false;
-      Slider = false;
-      Main = false;
-      Instructions = false;
-     More = false;
-     Acknowledgements = true;
-     Settings = true;
-        BuildMain = true;
-
-          controlP5.remove("slider1");
-  controlP5.remove("slider2");
-  controlP5.remove("slider3");
-  controlP5.remove("slider4");
-  controlP5.remove("slider5");
-  controlP5.remove("slider6");
-  controlP5.remove("slider7");
-  controlP5.remove("slider8");
-      controlP5.remove("Instructions");
-    controlP5.remove("More");
-    controlP5.remove("Acknowledgements");
-      }
-      
-      if (theEvent.getController().getName()=="slider1"){
-      auxSend[0]=theEvent.getController().getValue();
-      send("/slider1",auxSend);
-    }
-    if (theEvent.getController().getName()=="slider2") {
-      auxSend[0]=theEvent.getController().getValue();
-      send("/slider2",auxSend);
-    }
     
-        if (theEvent.getController().getName()=="slider3"){
-      auxSend[0]=theEvent.getController().getValue();
-      send("/slider3",auxSend);
-    }
-    if (theEvent.getController().getName()=="slider4") {
-      auxSend[0]=theEvent.getController().getValue();
-      send("/slider4",auxSend);
-    }
+  if ((theEvent.getController().getName()=="Sliders") && (Sliders==false)) {
+    Home=false;
+    Sliders=true;
+    Touch=false;
+    Gyro=false;
+    Buttons=false;
+    Settings=false;
     
-        if (theEvent.getController().getName()=="slider5"){
-      auxSend[0]=theEvent.getController().getValue();
-      send("/slider5",auxSend);
-    }
-    if (theEvent.getController().getName()=="slider6") {
-      auxSend[0]=theEvent.getController().getValue();
-      send("/slider6",auxSend);
-    }
+    controlP5.getController("S1").show();
+    controlP5.getController("S2").show();
+    controlP5.getController("S3").show();
+    controlP5.getController("S4").show();
+    controlP5.getController("S5").show();
+    controlP5.getController("S6").show();
+    controlP5.getController("S7").show();
+    controlP5.getController("S8").show();  
+    hideToggle();
+ 
+
     
-        if (theEvent.getController().getName()=="slider7"){
-      auxSend[0]=theEvent.getController().getValue();
-      send("/slider7",auxSend);
-    }
-    if (theEvent.getController().getName()=="slider8") {
-      auxSend[0]=theEvent.getController().getValue();
-      send("/slider8",auxSend);
-    }
-      
-    if (theEvent.getController().getName()=="Main") {
-       Main = true;
-       Touch = false;
-       Gyro = false;
-       Slider = false;
-       Instructions = false;
-       More = false;
-        // Settings = false;
-        Acknowledgements = false;
+  }
+  if ((theEvent.getController().getName()=="Touch") && (Touch==false)) {
+    Home=false;
+    Sliders=false;
+    Touch=true;
+    Gyro=false;
+    Buttons=false;
+    Settings=false;
+    hideSliders();
+    hideToggle();
+  }
+  if ((theEvent.getController().getName()=="Gyro") && (Gyro==false)) {
+    Home=false;
+    Sliders=false;
+    Touch=false;
+    Gyro=true;
+    Buttons=false;
+    Settings=false;
+    hideSliders();
+    hideToggle();
+  }
+  if ((theEvent.getController().getName()=="Buttons") && (Buttons==false)) {
+    Home=false;
+    Sliders=false;
+    Touch=false;
+    Gyro=false;
+    Buttons=true;
+    Settings=false;
+    hideSliders();
         
-       controlP5.remove("slider1");
-       controlP5.remove("slider2");
-       controlP5.remove("slider3");
-       controlP5.remove("slider4");
-       controlP5.remove("slider5");
-       controlP5.remove("slider6");
-       controlP5.remove("slider7");
-       controlP5.remove("slider8");
-       BuildSlider = true;
-  
-  if (BuildMain == true){
-  
-    controlP5.addBang("Instructions")
-    .setPosition(175, 300)
-      .setSize(120, 50)
-        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
-          ;
-  controlP5.addBang("More")
-    .setPosition(175, 400)
-      .setSize(120, 50)
-        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
-          ;
-  controlP5.addBang("Acknowledgements")
-    .setPosition(175, 500)
-      .setSize(120, 50)
-        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
-          ;
-  BuildMain = false;
-    }
-    }
+    controlP5.getController("T1").show();
+    controlP5.getController("T2").show();
+    controlP5.getController("T3").show();
+    controlP5.getController("T4").show();
+    controlP5.getController("T5").show();
+    controlP5.getController("T6").show();
+    controlP5.getController("T7").show();
+    controlP5.getController("T8").show();    
+  } 
   }
 }
