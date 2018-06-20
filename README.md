@@ -8,11 +8,10 @@
 
 ### APOSC - Android Processing OSC
 
-Development  80%
+Development  85%
 
 * Configuration scene does not work
-* Communication works
-
+* Operational
 
 ### COSC - Corona OSC
 
