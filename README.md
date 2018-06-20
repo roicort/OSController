@@ -1,10 +1,12 @@
 # OSController
 
+
+![4799082-0-us-unam.png](http://storage.googleapis.com/instapage-user-media/ca3493e1/4799082-0-us-unam.png)
+
+
 ![Build Status](https://travis-ci.org/dwyl/esta.svg?branch=master)
 ![Dependency Status](https://david-dm.org/dwyl/esta.svg)
 ![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
-
-![logo_unam_oro.jpg](https://www.zaragoza.unam.mx/portal/wp-content/Portal2015/Descargas/logo_unam_oro.jpg)
 
 ## Experimental OSC Controller developed by ENES Morelia.
 
