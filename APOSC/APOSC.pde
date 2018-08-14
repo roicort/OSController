@@ -372,7 +372,6 @@ void hideToggle(){
  
 }
 
-
 void controlEvent(ControlEvent theEvent) {
 
   if (theEvent.isController()) { 
