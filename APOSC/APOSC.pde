@@ -51,12 +51,14 @@ float[] toggle6 = new float[1];
 float[] toggle7 = new float[1];
 float[] toggle8 = new float[1];
 
+float[] window = new float[1];
+
 int col;
 
 //Aqui se configura la IP y el Puerto
 
-String IP = "192.168.0.100";
-int Port = 2223;
+String IP = "10.200.3.215";
+int Port = 9000;
 
 //***********************************
 
@@ -230,23 +232,6 @@ void draw() {
         textSize(32);
         text("Sliders", 10, 90);
         controlP5.draw();
-        
-        slider1[0]=controlP5.getController("S1").getValue();
-        send("/slider1",slider1);
-        slider2[0]=controlP5.getController("S2").getValue();
-        send("/slider2",slider2);
-        slider3[0]=controlP5.getController("S3").getValue();
-        send("/slider3",slider3);
-        slider4[0]=controlP5.getController("S4").getValue();
-        send("/slider4",slider4);
-        slider5[0]=controlP5.getController("S5").getValue();
-        send("/slider5",slider5);
-        slider6[0]=controlP5.getController("S6").getValue();
-        send("/slider6",slider6);
-        slider7[0]=controlP5.getController("S7").getValue();
-        send("/slider7",slider7);
-        slider8[0]=controlP5.getController("S8").getValue();
-        send("/slider8",slider8);
     }
     
     if (Touch == true){
@@ -284,24 +269,6 @@ void draw() {
         textSize(32);
         text("Buttons", 10, 90);
         controlP5.draw();
-        
-        toggle1[0]=controlP5.getController("T1").getValue();
-        send("/toggle1",toggle1);
-        toggle2[0]=controlP5.getController("T2").getValue();
-        send("/toggle2",toggle2);
-        toggle3[0]=controlP5.getController("T3").getValue();
-        send("/toggle3",toggle3);
-        toggle4[0]=controlP5.getController("T4").getValue();
-        send("/toggle4",toggle4);
-        toggle5[0]=controlP5.getController("T5").getValue();
-        send("/toggle5",toggle5);
-        toggle6[0]=controlP5.getController("T6").getValue();
-        send("/toggle6",toggle6);
-        toggle7[0]=controlP5.getController("T7").getValue();
-        send("/toggle7",toggle7);
-        toggle8[0]=controlP5.getController("T8").getValue();
-        send("/toggle8",toggle8);
-
     }
     
     if (Settings == true){
@@ -372,6 +339,7 @@ void hideToggle(){
  
 }
 
+
 void controlEvent(ControlEvent theEvent) {
 
   if (theEvent.isController()) { 
@@ -385,6 +353,8 @@ void controlEvent(ControlEvent theEvent) {
     Settings=false;  
     hideSliders();
     hideToggle();
+    window[0]=1;
+    send("/window",window);
   }
     
   if ((theEvent.getController().getName()=="Sliders") && (Sliders==false)) {
@@ -404,6 +374,8 @@ void controlEvent(ControlEvent theEvent) {
     controlP5.getController("S7").show();
     controlP5.getController("S8").show();  
     hideToggle();
+    window[0]=2;
+    send("/window",window);
  
 
     
@@ -417,6 +389,8 @@ void controlEvent(ControlEvent theEvent) {
     Settings=false;
     hideSliders();
     hideToggle();
+        window[0]=3;
+    send("/window",window);
   }
   if ((theEvent.getController().getName()=="Gyro") && (Gyro==false)) {
     Home=false;
@@ -427,6 +401,8 @@ void controlEvent(ControlEvent theEvent) {
     Settings=false;
     hideSliders();
     hideToggle();
+        window[0]=4;
+    send("/window",window);
   }
   if ((theEvent.getController().getName()=="Buttons") && (Buttons==false)) {
     Home=false;
@@ -436,6 +412,8 @@ void controlEvent(ControlEvent theEvent) {
     Buttons=true;
     Settings=false;
     hideSliders();
+    window[0]=5;
+    send("/window",window);
         
     controlP5.getController("T1").show();
     controlP5.getController("T2").show();
@@ -446,5 +424,80 @@ void controlEvent(ControlEvent theEvent) {
     controlP5.getController("T7").show();
     controlP5.getController("T8").show();    
   } 
+  if (theEvent.getController().getName()=="S1"){
+      slider1[0]=theEvent.getController().getValue();
+      send("/slider1",slider1);
+    }
+    if (theEvent.getController().getName()=="S2") {
+      slider2[0]=theEvent.getController().getValue();
+      send("/slider2",slider2);
+    }
+    
+        if (theEvent.getController().getName()=="S3"){
+      slider3[0]=theEvent.getController().getValue();
+      send("/slider3",slider3);
+    }
+    if (theEvent.getController().getName()=="S4") {
+      slider4[0]=theEvent.getController().getValue();
+      send("/slider4",slider4);
+    }
+    
+        if (theEvent.getController().getName()=="S5"){
+      slider5[0]=theEvent.getController().getValue();
+      send("/slider5",slider5);
+    }
+    if (theEvent.getController().getName()=="S6") {
+      slider6[0]=theEvent.getController().getValue();
+      send("/slider6",slider6);
+    }
+    
+        if (theEvent.getController().getName()=="S7"){
+      slider7[0]=theEvent.getController().getValue();
+      send("/slider7",slider7);
+    }
+    if (theEvent.getController().getName()=="S8") {
+      slider8[0]=theEvent.getController().getValue();
+      send("/slider8",slider8);
+    }
+    
+      if (theEvent.getController().getName()=="T1") {
+           toggle1[0]=theEvent.getController().getValue();
+           send("/button1",toggle1);
+    }
+              if (theEvent.getController().getName()=="T2") {
+           toggle2[0]=theEvent.getController().getValue();
+           send("/button2",toggle2);
+    }
+              if (theEvent.getController().getName()=="T3") {
+           toggle3[0]=theEvent.getController().getValue();
+           send("/button3",toggle3);
+    }
+              if (theEvent.getController().getName()=="T4") {
+           toggle4[0]=theEvent.getController().getValue();
+           send("/button4",toggle4);
+    }
+            if (theEvent.getController().getName()=="T5") {
+           toggle5[0]=theEvent.getController().getValue();
+           send("/button5",toggle5);
+    }
+              if (theEvent.getController().getName()=="T6") {
+           toggle6[0]=theEvent.getController().getValue();
+           send("/button6",toggle6);
+    }
+              if (theEvent.getController().getName()=="T7") {
+           toggle7[0]=theEvent.getController().getValue();
+           send("/button7",toggle7);
+    }
+              if (theEvent.getController().getName()=="T8") {
+           toggle8[0]=theEvent.getController().getValue();
+           send("/button8",toggle8);
+    }
   }
+}
+
+    
+
+
+public void varName(int _varName) {
+  varName = _varName;
 }
