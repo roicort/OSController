@@ -57,8 +57,8 @@ int col;
 
 //Aqui se configura la IP y el Puerto
 
-String IP = "10.200.3.215";
-int Port = 9000;
+String IP = "192.168.1.192";
+int Port = 8000;
 
 //***********************************
 
