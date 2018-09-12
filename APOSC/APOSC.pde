@@ -51,6 +51,8 @@ float[] toggle6 = new float[1];
 float[] toggle7 = new float[1];
 float[] toggle8 = new float[1];
 
+float[] vol = new float[1];
+
 float[] window = new float[1];
 
 int col;
@@ -206,6 +208,11 @@ void setup() {
      .setSize(50,20)
      .hide()
      ;
+    controlP5.addToggle("vol")
+     .setPosition(260,475)
+     .setSize(50,20)
+     .hide()
+     ;
      
   oscP5 = new OscP5(this, 12000);   //listening
   myRemoteLocation = new NetAddress(IP, Port);  //  speak to
@@ -323,6 +330,7 @@ void hideSliders(){
     controlP5.getController("S6").hide();
     controlP5.getController("S7").hide();
     controlP5.getController("S8").hide();  
+    controlP5.getController("vol").hide(); 
  
 }
 
@@ -389,7 +397,8 @@ void controlEvent(ControlEvent theEvent) {
     Settings=false;
     hideSliders();
     hideToggle();
-        window[0]=3;
+    controlP5.getController("vol").show(); 
+    window[0]=3;
     send("/window",window);
   }
   if ((theEvent.getController().getName()=="Gyro") && (Gyro==false)) {
@@ -458,6 +467,10 @@ void controlEvent(ControlEvent theEvent) {
     if (theEvent.getController().getName()=="S8") {
       slider8[0]=theEvent.getController().getValue();
       send("/slider8",slider8);
+    }
+    if (theEvent.getController().getName()=="vol") {
+      vol[0]=theEvent.getController().getValue();
+      send("/vol",vol);
     }
     
       if (theEvent.getController().getName()=="T1") {
