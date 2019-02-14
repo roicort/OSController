@@ -7,30 +7,39 @@
 
 ## Experimental OSC Controller developed by ENES Morelia.
 
+### EOSC - Electron OSC
+
+Dev 90%
+
+* Fully operational
+* Design missing
+
 ### POSC - Processing OSC
 
-Development  99%
+Dev  95%
 
 * Fully operational
 * No-known Bugs
 
 ### APOSC - Android Processing OSC
 
-Development  85%
+Dev  85%
 
 * Configuration scene does not work
+* Must configure before launching
 * Operational
 
 ### References
 
 Special Thanks To
 
+* Electron
+* osc.js
+* NexusUI
+* Express
 * Processing
 * oscP5 
 * controlP5
-* ket:ai
-* ReactNative
-* Corona
 
 
 
