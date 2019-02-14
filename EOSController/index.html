@@ -2,39 +2,40 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>OSController</title>
   </head>
   <body>
     <h1>Welcome!</h1>
-
-    <canvas id="canvas"></canvas>
-    <script src="/build/qrcode.min.js"></script>
-    <script>
-      // You can also require other files to run in this process
-
-      var os = require('os');
-
-      var interfaces = os.networkInterfaces();
-      var addresses = [];
-      for (var k in interfaces) {
-          for (var k2 in interfaces[k]) {
-              var address = interfaces[k][k2];
-              if (address.family === 'IPv4' && !address.internal) {
-                  addresses.push(address.address);
+    <script> 
+    var getIPAddresses = function () {
+      var os = require("os"),
+      interfaces = os.networkInterfaces(),
+      ipAddresses = [];
+  
+      for (var deviceName in interfaces){
+          var addresses = interfaces[deviceName];
+  
+          for (var i = 0; i < addresses.length; i++) {
+              var addressInfo = addresses[i];
+  
+              if (addressInfo.family === "IPv4" && !addressInfo.internal) {
+                  ipAddresses.push(addressInfo.address);
               }
           }
       }
-      var qrcode = addresses
-      qrcode="http://"+qrcode+":8084"
+  
+      return ipAddresses;
+    };
+    </script>
+    <canvas id="canvas"></canvas>
+    <script src="/build/qrcode.min.js"></script>
+    <script>
+      var ipAddress = "http://"+String(getIPAddresses())+":8084";
       var QRCode = require('qrcode')
-      var canvas = document.getElementById('canvas')
-
-      QRCode.toCanvas(canvas, qrcode, function (error) {
+      QRCode.toCanvas(document.getElementById('canvas'), ipAddress, function (error) {
         if (error) console.error(error)
         console.log('success!');
       })
-
-      
     </script>
   </body>
 </html>

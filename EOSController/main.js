@@ -55,5 +55,36 @@ app.on('activate', function () {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-const { fork } = require('child_process')
-const ps = fork(`${__dirname}/server.js`)
+//--------------------------------------------------
+//  Bi-Directional OSC messaging Websocket <-> UDP
+//--------------------------------------------------
+var osc = require("osc"),
+    WebSocket = require("ws");
+
+var udp = new osc.UDPPort({
+    remoteAddress: "127.0.0.1",
+    remotePort: 9000
+});
+
+udp.on("ready", function () {
+    console.log("Broadcasting OSC over UDP to", udp.options.remoteAddress + ", Port:", udp.options.remotePort);
+});
+
+udp.open();
+
+var wss = new WebSocket.Server({
+    port: 8081
+});
+
+wss.on("connection", function (socket) {
+    console.log("A Web Socket connection has been established!");
+    var socketPort = new osc.WebSocketPort({
+        socket: socket
+    });
+
+    var relay = new osc.Relay(udp, socketPort, {
+        raw: true
+    });
+});
+
+require('./server.js')

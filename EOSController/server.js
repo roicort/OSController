@@ -1,8 +1,17 @@
-var static = require('node-static');
-var file = new static.Server(`weboscontroller/index.html`)
+var express    = require("express");
+var morgan     = require("morgan");
+var app        = express();
 
-require('http').createServer(function (request, response) {
-    request.addListener('end', function () {
-        file.serve(request, response)
-    }).resume()
-}).listen(8084)
+var port = process.env.PORT || 8084;
+
+app.use(morgan("dev"));
+app.use(express.static("./web"));
+
+app.get("/", function(req, res) {
+    res.sendFile("./index.html"); //index.html file of your angularjs application
+});
+
+// Start Server
+app.listen(port, function () {
+    console.log( "Express server listening on port " + port);
+});
