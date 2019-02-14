@@ -5,10 +5,10 @@ var app        = express();
 var port = process.env.PORT || 8084;
 
 app.use(morgan("dev"));
-app.use(express.static("./web"));
+app.use(express.static(__dirname+'/web'));
 
 app.get("/", function(req, res) {
-    res.sendFile("./index.html"); //index.html file of your angularjs application
+    res.sendFile('./index.html'); //index.html file of your angularjs application
 });
 
 // Start Server
