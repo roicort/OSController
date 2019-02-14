@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>OSController Web</title>
+        <meta charset="UTF-8" />
+        <script src="node_modules/NexusUI.js"></script>
+        <script src="node_modules/jquery/dist/jquery.js"></script>
+        <script src="node_modules/osc/dist/osc-browser.min.js"></script>
+    </head>
+
+
+    <body>
+
+        <h1>osc.js Web Socket</h1>
+
+        <input type="text" id="inputtext" value="localhost">
+
+        <div id="dial1"></div>
+        <div id="dial2"></div>
+        <div id="dial3"></div>
+        <div id="dial4"></div>
+        <div id="dial5"></div>
+        <div id="dial6"></div>
+        <div id="dial7"></div>
+        <div id="dial8"></div>
+
+
+        <div id="toggle1"></div>
+        <div id="toggle2"></div>
+        <div id="toggle3"></div>
+        <div id="toggle4"></div>
+        <div id="toggle5"></div>
+        <div id="toggle6"></div>
+        <div id="toggle7"></div>
+        <div id="toggle8"></div>
+
+        <div id="position1"></div>
+
+        <div id="tilt1"></div>
+
+        <script> 
+
+        var button = document.createElement("button");
+        button.innerHTML = "Connect";
+
+        var body = document.getElementsByTagName("body")[0];
+        body.appendChild(button);
+
+        button.addEventListener ("click", function() {
+
+        var ip = document.getElementById("inputtext").value;
+
+        var dial1 = new Nexus.Dial('#dial1')
+        var dial2 = new Nexus.Dial('#dial2')
+        var dial3 = new Nexus.Dial('#dial3')
+        var dial4 = new Nexus.Dial('#dial4')
+        var dial5 = new Nexus.Dial('#dial5')
+        var dial6 = new Nexus.Dial('#dial6')
+        var dial7 = new Nexus.Dial('#dial7')
+        var dial8 = new Nexus.Dial('#dial8')
+
+        var toggle1 = new Nexus.Toggle('#toggle1')
+        var toggle2 = new Nexus.Toggle('#toggle2')
+        var toggle3 = new Nexus.Toggle('#toggle3')
+        var toggle4 = new Nexus.Toggle('#toggle4')
+        var toggle5 = new Nexus.Toggle('#toggle5')
+        var toggle6 = new Nexus.Toggle('#toggle6')
+        var toggle7 = new Nexus.Toggle('#toggle7')
+        var toggle8 = new Nexus.Toggle('#toggle8')
+
+        var position1 = new Nexus.Position('#position1')
+
+        var tilt1 = new Nexus.Tilt('#tilt1')
+
+        var websock = "ws://";
+        var port = ":8081";
+
+        u = websock.concat(ip, port);
+
+        var port = new osc.WebSocketPort({
+        url: u
+        });
+
+        port.on("message", function (oscMessage) {
+        $("#message").text(JSON.stringify(oscMessage, undefined, 2));
+        console.log("message", oscMessage);
+        });
+
+        port.open();
+
+        var sendvalue = function (path,value) {
+            port.send({
+                address: path,
+                args: [value]
+            });
+        };
+        
+        dial1.on('change',function(v) {
+        sendvalue("/dial1",v);
+            })
+
+        dial2.on('change',function(v) {
+        sendvalue("/dial2",v);
+            })
+
+        dial3.on('change',function(v) {
+        sendvalue("/dial3",v);
+            })
+
+        dial4.on('change',function(v) {
+        sendvalue("/dial4",v);
+            })  
+
+        dial5.on('change',function(v) {
+        sendvalue("/dial5",v);
+            })  
+        dial6.on('change',function(v) {
+        sendvalue("/dial6",v);
+            })  
+        dial7.on('change',function(v) {
+        sendvalue("/dial7",v);
+            })  
+        dial8.on('change',function(v) {
+        sendvalue("/dial8",v);
+            })
+
+        toggle1.on('change',function(v) {
+        sendvalue("/toggle1",v);
+            })
+
+        toggle2.on('change',function(v) {
+        sendvalue("/toggle2",v);
+            })
+
+        toggle3.on('change',function(v) {
+        sendvalue("/toggle3",v);
+            })
+
+        toggle4.on('change',function(v) {
+        sendvalue("/toggle4",v);
+            })  
+
+        toggle5.on('change',function(v) {
+        sendvalue("/toggle5",v);
+            })  
+        toggle6.on('change',function(v) {
+        sendvalue("/toggle6",v);
+            })  
+        toggle7.on('change',function(v) {
+        sendvalue("/toggle7",v);
+            })  
+        toggle8.on('change',function(v) {
+        sendvalue("/toggle8",v);
+            })
+  
+        position1.on('change',function(v) {
+        sendvalue("/positionX",v.x);
+        sendvalue("/positionY",v.y);
+        })
+
+        tilt1.on('change',function(v) {
+        sendvalue("/tiltX",v.x);
+        sendvalue("/tiltY",v.y);
+        })
+
+        });
+        
+        </script>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>OSController</title>
+  </head>
+  <body>
+    <h1>Welcome!</h1>
+    <script> 
+    var getIPAddresses = function () {
+      var os = require("os"),
+      interfaces = os.networkInterfaces(),
+      ipAddresses = [];
+  
+      for (var deviceName in interfaces){
+          var addresses = interfaces[deviceName];
+  
+          for (var i = 0; i < addresses.length; i++) {
+              var addressInfo = addresses[i];
+  
+              if (addressInfo.family === "IPv4" && !addressInfo.internal) {
+                  ipAddresses.push(addressInfo.address);
+              }
+          }
+      }
+  
+      return ipAddresses;
+    };
+    </script>
+    <canvas id="canvas"></canvas>
+    <script src="/build/qrcode.min.js"></script>
+    <script>
+      var ipAddress = "http://"+String(getIPAddresses())+":8084";
+      var QRCode = require('qrcode')
+      QRCode.toCanvas(document.getElementById('canvas'), ipAddress, function (error) {
+        if (error) console.error(error)
+        console.log('success!');
+      })
+    </script>
+  </body>
+</html>
