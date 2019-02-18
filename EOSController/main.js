@@ -8,8 +8,9 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 400,
-    height: 300,
+    width: 256+32,
+    height: 256+32,
+    frame: false,
     webPreferences: {
       nodeIntegration: true
     }
@@ -17,6 +18,7 @@ function createWindow () {
 
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
+  mainWindow.isResizable(false);
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
