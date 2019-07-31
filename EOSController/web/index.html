@@ -39,7 +39,7 @@
         <h1>OSController Web</h1>
 
         <input type="text" id="inputtext" value="">
-
+        
         <div id="slider1"></div>
         <div id="slider2"></div>
         <div id="slider3"></div>
@@ -74,30 +74,29 @@
         button.addEventListener ("click", function() {
 
             button.parentNode.removeChild(button);
-
             var ip = document.getElementById("inputtext").value;
 
-            var slider1 = new Nexus.Slider('#slider1')
-            var slider2 = new Nexus.Slider('#slider2')
-            var slider3 = new Nexus.Slider('#slider3')
-            var slider4 = new Nexus.Slider('#slider4')
-            var slider5 = new Nexus.Slider('#slider5')
-            var slider6 = new Nexus.Slider('#slider6')
-            var slider7 = new Nexus.Slider('#slider7')
-            var slider8 = new Nexus.Slider('#slider8')
+            var slider1 = new Nexus.Slider('slider1')
+            var slider2 = new Nexus.Slider('slider2')
+            var slider3 = new Nexus.Slider('slider3')
+            var slider4 = new Nexus.Slider('slider4')
+            var slider5 = new Nexus.Slider('slider5')
+            var slider6 = new Nexus.Slider('slider6')
+            var slider7 = new Nexus.Slider('slider7')
+            var slider8 = new Nexus.Slider('slider8')
 
-            var toggle1 = new Nexus.Toggle('#toggle1')
-            var toggle2 = new Nexus.Toggle('#toggle2')
-            var toggle3 = new Nexus.Toggle('#toggle3')
-            var toggle4 = new Nexus.Toggle('#toggle4')
-            var toggle5 = new Nexus.Toggle('#toggle5')
-            var toggle6 = new Nexus.Toggle('#toggle6')
-            var toggle7 = new Nexus.Toggle('#toggle7')
-            var toggle8 = new Nexus.Toggle('#toggle8')
+            var toggle1 = new Nexus.Toggle('toggle1')
+            var toggle2 = new Nexus.Toggle('toggle2')
+            var toggle3 = new Nexus.Toggle('toggle3')
+            var toggle4 = new Nexus.Toggle('toggle4')
+            var toggle5 = new Nexus.Toggle('toggle5')
+            var toggle6 = new Nexus.Toggle('toggle6')
+            var toggle7 = new Nexus.Toggle('toggle7')
+            var toggle8 = new Nexus.Toggle('toggle8')
 
-            var position1 = new Nexus.Position('#position1')
+            var position1 = new Nexus.Position('position1')
 
-            var tilt1 = new Nexus.Tilt('#tilt1')
+            var tilt1 = new Nexus.Tilt('tilt1')
 
             var websock = "ws://";
             var port = ":8081";
