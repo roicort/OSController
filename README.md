@@ -24,10 +24,10 @@
 
 ### Contributors
 
-<a href="https://enesmorelia.unam.mx" target="_blank"><img src="img/enes.png" style="width:128px;height:128px;"></a>
-<a href="https://www.cmmas.org" target="_blank"><img src="img/cmmas.png" style="width:128px;height:128px;"></a>
-<a href="https://www.cenart.gob.mx" target="_blank"><img src="img/cenart.png" style="width:128px;height:128px;"></a>
-<a href="https://fonca.cultura.gob.mx" target="_blank"><img src="img/fonca.png" style="width:128px;height:128px;"></a>
+<a href="https://enesmorelia.unam.mx" ><img src="img/enes.png" style="width:128px;height:128px;"></a>
+<a href="https://www.cmmas.org"><img src="img/cmmas.png" style="width:128px;height:128px;"></a>
+<a href="https://www.cenart.gob.mx"><img src="img/cenart.png" style="width:128px;height:128px;"></a>
+<a href="https://fonca.cultura.gob.mx"><img src="img/fonca.png" style="width:128px;height:128px;"></a>
 
 
 ### References
