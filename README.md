@@ -24,7 +24,10 @@
 
 ### Contributors
 
+<a href="https://opencollective.com/visjs/sponsor/0/website" target="_blank"><img src="img/enes.png"></a>
+<a href="https://opencollective.com/visjs/sponsor/0/website" target="_blank"><img src="img/cmmas.png"></a>
 <a href="https://opencollective.com/visjs/sponsor/0/website" target="_blank"><img src="img/cenart.png"></a>
+
 
 ### References
 
