@@ -24,10 +24,10 @@
 
 ### Contributors
 
-* <a href="https://opencollective.com/visjs/sponsor/0/website" target="_blank"><img src="img/enes.png"></a>
-* <a href="https://opencollective.com/visjs/sponsor/0/website" target="_blank"><img src="img/cmmas.png"></a>
-* <a href="https://opencollective.com/visjs/sponsor/0/website" target="_blank"><img src="img/cenart.png"></a>
-* <a href="https://opencollective.com/visjs/sponsor/0/website" target="_blank"><img src="img/fonca.png"></a>
+* <a href="https://enesmorelia.unam.mx.com" target="_blank"><img src="img/enes.png"></a>
+* <a href="https://www.cmmas.org" target="_blank"><img src="img/cmmas.png"></a>
+* <a href="https://www.cenart.gob.mx" target="_blank"><img src="img/cenart.png"></a>
+* <a href="https://fonca.cultura.gob.mx" target="_blank"><img src="img/fonca.png"></a>
 
 
 ### References
