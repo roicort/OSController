@@ -24,7 +24,7 @@
   "dependencies": {
     "express": "^4.16.4",
     "morgan": "^1.9.1",
-    "osc": "2.2.4",
+    "osc": "^2.4.0",
     "qrcode": "^1.3.3"
   }
 }

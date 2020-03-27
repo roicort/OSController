@@ -4,6 +4,6 @@
     "ignore": [],
     "dependencies": {
         "jquery": "^3.4.1",
-        "osc": "2.2.1"
+        "osc": "^2.4.0"
     }
 }

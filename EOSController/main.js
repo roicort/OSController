@@ -65,7 +65,7 @@ var osc = require("osc"),
 
 var udp = new osc.UDPPort({
     remoteAddress: "127.0.0.1",
-    remotePort: 9000
+    remotePort: 4444
 });
 
 udp.on("ready", function () {
