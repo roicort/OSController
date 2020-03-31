@@ -1,14 +1,9 @@
-# OSController
+# Processing OSController
 
 ![Build Status](https://travis-ci.org/dwyl/esta.svg?branch=master)
 ![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)
 
-## Experimental OSC Controllers
-
-### EOSC - Electron OSC
-
-* Fully operational
-* Design missing
+## Experimental Processing OSC Controllers
 
 ### POSC - Processing OSC
 
