@@ -29,18 +29,4 @@
 <a href="https://fonca.cultura.gob.mx"><img src="img/fonca.png"></a>
 
 
-### References
-
-Special Thanks To
-
-* Electron
-* osc.js
-* NexusUI
-* Express
-* Processing
-* oscP5 
-* controlP5
-
-
-
 
