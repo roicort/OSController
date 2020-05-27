@@ -12,7 +12,6 @@
 
 ### APOSC - Android Processing OSC
 
-* Configuration scene does not work
 * Must configure before launching
 * Operational
 
